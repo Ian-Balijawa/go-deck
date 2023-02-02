@@ -2,24 +2,29 @@ package main
 
 import "fmt"
 
-func main() {
-	colors := map[string]string{
-		"red":   "#ff0000",
-		"green": "#00ff00",
-		"blue":  "#0000ff",
-		"white": "#ffffff",
-	}
-
-	colors["black"] = "#00000"
-
-	printMap(colors)
-
-	size := len(colors)
-	fmt.Println(size)
+type bot interface {
+	getGreeting() string
 }
 
-func printMap(c map[string]string) {
-	for color, hex := range c {
-		fmt.Println("Hex code for", color, "is", hex)
-	}
+type englishBot struct{}
+type spanishBot struct{}
+
+func main() {
+	eb := englishBot{}
+	sb := spanishBot{}
+
+	printGreeting(eb)
+	printGreeting(sb)
+}
+
+func (englishBot) getGreeting() string {
+	return "Hi there!"
+}
+
+func (spanishBot) getGreeting() string {
+	return "Hola!"
+}
+
+func printGreeting(b bot) {
+	fmt.Println(b.getGreeting())
 }
