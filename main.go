@@ -2,43 +2,24 @@ package main
 
 import "fmt"
 
-type contactInfo struct {
-	phone   int
-	email   string
-	address string
-}
-
-type person struct {
-	firstName string
-	lastName  string
-	contact   contactInfo
-}
-
 func main() {
-
-	ian := person{
-		firstName: "Ian",
-		lastName:  "Baliawa",
-		contact: contactInfo{
-			phone:   787444814,
-			address: "Kawaala",
-			email:   "inabalijjawa@gmail.com",
-		},
+	colors := map[string]string{
+		"red":   "#ff0000",
+		"green": "#00ff00",
+		"blue":  "#0000ff",
+		"white": "#ffffff",
 	}
 
-	ian.updateFirstName("puff")
-	ian.print()
+	colors["black"] = "#00000"
 
-	age := 12
+	printMap(colors)
 
-	fmt.Println("address ", &age)
-
+	size := len(colors)
+	fmt.Println(size)
 }
 
-func (p person) print() {
-	fmt.Printf("%+v \n", p)
-}
-
-func (p *person) updateFirstName(newFirstname string) {
-	(*p).firstName = newFirstname
+func printMap(c map[string]string) {
+	for color, hex := range c {
+		fmt.Println("Hex code for", color, "is", hex)
+	}
 }
