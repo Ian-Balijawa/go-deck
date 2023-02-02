@@ -14,11 +14,11 @@ func TestNewDeck(t *testing.T) {
 	}
 
 	if d[0] != "Ace of spades" {
-		t.Errorf("Expected Ace of Spades as first card but got $v", d[0])
+		t.Error("Expected Ace of Spades as first card but got $v", d[0])
 	}
 
 	if d[len(d)-1] != "Four of Clubs" {
-		t.Errorf("Expected Four of Clubs as first card but got $v", d[len(d)-1])
+		t.Error("Expected Four of Clubs as first card but got $v", d[len(d)-1])
 	}
 
 }
